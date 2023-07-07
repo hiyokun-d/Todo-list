@@ -80,6 +80,7 @@ const removeItemFromCookie = (indexToRemove: number) => {
 											type="checkbox"
 											placeholder="Hello"
 											name={index.data}
+											onChange={(e) => console.log(e.target.checked)}
 										/>
 										<label htmlFor={index.data}>{index.data}</label>
 									</td>
@@ -91,13 +92,25 @@ const removeItemFromCookie = (indexToRemove: number) => {
 							);
 						})}
 					</table>
-        </div>
-        
-        <form>
-          <input type="text" title="activities" placeholder="put your activities" value={activityData} onInput={e => setActivity(e.target.value)} />
-          <button type="button" onClick={() => inputData()}>submit</button>
-          <button type="button" onClick={() => clearData()}>clear</button>
-        </form>
+				</div>
+
+				<form>
+					<input
+						type="text"
+						title="activities"
+						placeholder="put your activities"
+						value={activityData}
+						onInput={(e: React.FormEvent<HTMLInputElement>) =>
+							setActivity(e.currentTarget.value)
+						}
+					/>
+					<button type="button" onClick={() => inputData()}>
+						submit
+					</button>
+					<button type="button" onClick={() => clearData()}>
+						clear
+					</button>
+				</form>
 			</div>
 		</>
 	);
